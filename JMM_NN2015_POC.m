@@ -150,11 +150,16 @@ classdef JMM_NN2015_POC < handle
  	% See Flexer. (1997). Limitations of self-organizing maps for vector quantization and multidimensional scaling.
         % If user is uncomfortable with fixed neighborhood training, see http://www.cis.hut.fi/projects/somtoolbox/about
         
-        
         %% Shuffle Permutation
         
         numberofShuffles  = %2000; % number of permutation shuffles
         ciArray           = %[0.05 0.01 0.001]; %p values to use
+        
+        %% Spectrogram Display Configuration
+        
+        % Leave fields empty if you are fine with not having labeled axes
+        freqRange = [50 180]; %array of 2 values describing the range to acompany the y axis of the spectrogram in output figures.
+        timeRange = [-100 100]; %array of 2 values describing the range to acompany the x axis of the spectrogram in output figures.
         
         
     end
@@ -585,12 +590,29 @@ classdef JMM_NN2015_POC < handle
         
         function this = Generate_N_SpecificityExamples(this)
             
+            NUMBER_OF_TICKS_PER_AXIS = 5;
+            
             if ~this.complete
                 this.Start();
             end
             
+            if ~isempty(this.timeRange)
+                spectrogramLabel = true;
+            else
+                spectrogramLabel = false;
+            end
+            
             classCompostionArray = vertcat(this.classStructureArray.classComposition);
             [~, maxSpecificityIdx] = max(classCompostionArray, [], 1);
+            
+            if spectrogramLabel
+                spectrogramDimensions = size(this.classStructureArray(1).bestMatchedSpectrogram);
+                xAxisTick = round( linspace(1, spectrogramDimensions(2), NUMBER_OF_TICKS_PER_AXIS) );
+                yAxisTick = round( linspace(1, spectrogramDimensions(1), NUMBER_OF_TICKS_PER_AXIS) );
+            
+                xAxisLabel = round( linspace(this.timeRange(1), this.timeRange(2), NUMBER_OF_TICKS_PER_AXIS) );
+                yAxisLabel = round( linspace(this.freqRange(1), this.freqRange(2), NUMBER_OF_TICKS_PER_AXIS) );
+            end
             
             for i = 1:numel(this.labelIDs)
                 
@@ -616,14 +638,21 @@ classdef JMM_NN2015_POC < handle
                 sanePColor(classInstance.centroidSpectrogramFromWeights                       ./  ...
                     sum( sum( classInstance.centroidSpectrogramFromWeights))                      );
                 
+                
                 title(['Spectrogram from class defined by machine learning ' char(10) 'and feature composition (not from data).'])
                 
-                set(gca,'xtick',[],'ytick',[]);
-                
+                if spectrogramLabel
+                    set(gca,'xtick', xAxisTick, 'xticklabel', xAxisLabel, ...
+                            'ytick', yAxisTick, 'yticklabel', yAxisLabel) ;
+
+
+                    xlabel('Time (ms)');
+                    ylabel('Frequency (Hz)');
+                end
                 
                 subplot(1,2,2)
                 
-                sanePColor(classInstance.bestMatchedSpectrogram                               ./ ...
+                sanePColor(classInstance.bestMatchedSpectrogram ./                               ...
                     sum( sum( classInstance.centroidSpectrogramFromWeights))                      );
                 
                 title(['Spectrogram for most representative element from data.'])
@@ -633,12 +662,19 @@ classdef JMM_NN2015_POC < handle
                     char(10) 'composition by label - ' classCompositionAproximationString           ...
                     char(10) 'size - ' int2str(classInstance.size) ]                                );
                 
-                set(gca,'xtick',[],'ytick',[]);
+                if spectrogramLabel
+                    set(gca,'xtick', xAxisTick, 'xticklabel', xAxisLabel, ...
+                            'ytick', yAxisTick, 'yticklabel', yAxisLabel) ;
+
+                    xlabel('Time (ms)');
+                    ylabel('Frequency (Hz)');
+                end
                 
                 export_fig([this.imageDir 'LabelSpecificClassExample_L' int2str(i) '.jpg'], '-a1', '-q100');
                 
             end
             
+            close all 
         end
         
     end
