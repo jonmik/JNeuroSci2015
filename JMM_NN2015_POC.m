@@ -18,15 +18,15 @@ classdef JMM_NN2015_POC < handle
     %  The proof of concept is provided in such a way that it is meant to be
     %  immediately applicable as a tool to the users own experimental data. a minimal
     %  collection of graphical output is provided to orientate the user, but we
-    %  encourage users to extend this code to suite their own purposes.
+    %  encourage users to extend this code to suit their own purposes.
     %
     % Dependencies:
     %  Apart from the dependencies provided in the folder /include/, this class
     %  also assumes the user has the Neural Network Toolbox and Statistics
     %  Toolbox from MathWorks available to them. If you do not, there exist more
-    %  power, involved, and open source implementations of self organizing (Kohonen) maps,
-    %  and non-negative matrix factorization as toolboxes which can be readily
-    %  substituted in this file - see the following references:
+    %  powerful, involved, and open source implementations of self organizing (Kohonen) maps,
+    %  and non-negative matrix factorization through toolboxes which can be readily
+    %  substituted into this file - see the following references:
     %
     %     Vesanto, et al. (2000). SOM toolbox for Matlab 5.
     %     Helsinki: Helsinki University of Technology.
@@ -36,19 +36,19 @@ classdef JMM_NN2015_POC < handle
     %
     % Usage:
     %  Make sure to add the include directory to your search path.
-    %  Configuration Variable assignment have been coded out, please
+    %  Configuration Variable assignment have been commented out, please
     %  uncomment and read descriptions before continuing (lines 125-160). 
     %
     % Input:
     %
-    %  The usage for this class is straight forward. It assumes data is provided
-    %  from 2 or more user-defined categories of events of equal sizes. The data here
+    %  The usage of this class is straight forward. It assumes data is provided
+    %  from 2 or more user-defined, equally sized categories of events. The data here
     %  are assumed to be spectrograms, but this does not strictly have to be the case.
-    %  What is important is that at whichever scale is provided, differences for
-    %  each individual event are pronounced and distinguishable, as well as centred
-    %  in a meaningful way.
+    %  What is important is that at whichever scale the user has chosen,
+    %  differences between individual events are pronounced and distinguishable, 
+    %  as well as centred in a meaningful and accurate way.
     %
-    %  Input is to be provided as an array of structures
+    %  Input is to be formatted as an array of structures
     %  with the following fields:
     %    entry(i).spectrogram =  [NxM double];
     %    entry(i).labelID     =  double;
@@ -65,26 +65,26 @@ classdef JMM_NN2015_POC < handle
     %  with the values you wish to use.
     %
     %  The number of labels is determined from the input and has no
-    %  configuration value.
+    %  configuration variable.
     %
     % Output:
     %  All output is collected under the local folder
-    %    \JMM_NN2015_POC_output\<dateVec>\
-    %  The program will output the classes as defined by the self organizing
+    %   cd()\JMM_NN2015_POC_output\<dateVec>\
+    %  The program will output classes as they are defined by the self organizing
     %  map. The number of classes, and how closely they fit the data as a whole
-    %  are properties of the self organized map which we leave to the user to
-    %  configure. It will also output a series of images, the first of which is a
-    %  scatter plot with the maximum class specificity along any one label, as
-    %  well as the confidence intervals for each p-val specified. In addition to
-    %  this image, the class which is most specific to each enumerated label
-    %  will also have the spectrogram for it's best matching unit and a centroid
-    %  based on the feature weights of it's members time-frequency non-negative
-    %  matrix factorization. In the title of this figure will appear the class label,
-    %  composition by percent, and size. Lastly a file detailing each class
-    %  will be saved with the name matFile.mat
-    %
-    %  Variable saved will be an object from the class.
-    %  Public variables with get access can be used to retrieve results
+    %  are properties of the self organized map, which we leave to the user to
+    %  configure through it's parameters. It will also output a series of images, 
+    %  the first of which is a scatter plot with the maximum class specificity along any 
+    %  one label, as well as the confidence intervals for each p-val specified. 
+    %  In addition to this image, the class which is most specific to each enumerated label
+    %  will also have the spectrogram for its best matching unit, and a centroid
+    %  based on the feature weights of its members (via time-frequency non-negative
+    %  matrix factorization). In the title of this figure will appear the
+    %  label most represented; the class id; the composition by percent, and size. 
+    %  Lastly a file detailing each class will be saved with the name matFile.mat
+    %  The variable therein will be an object from this class.
+
+    %  Properties with public get access can be used to retrieve results
     %  from properties with private set access (near end of file) 
     %  as if they were a struct - eg:
     % 
@@ -108,10 +108,10 @@ classdef JMM_NN2015_POC < handle
     %  with classes, begin at the function JMM_NN2015_POC(...).
     %
     %  The program flow has been restricted to Main(...), variables and
-    %  functions have been descriptive and verbose titles.
+    %  functions have been given descriptive and verbose titles.
     %
-    %  See the publicly properties near the top of the class for settings which
-    %  must be configured with their descriptions and some recommended ranges.
+    %  See the public properties near the top of the class for settings which
+    %  must be configured, along with their descriptions and some recommended ranges.
     %
     %
     %  Please feel free to contact me at JonMik@YorkU.Ca with any questions.
