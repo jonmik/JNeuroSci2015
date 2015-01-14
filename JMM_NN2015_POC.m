@@ -135,16 +135,16 @@ classdef JMM_NN2015_POC < handle
         
         
         %% NNMF configuration
-        numberOfSpectralFeatures = %[5]; %leave empty to estimate empirically (time consuming)
-        numberOfEstimateAttempts = %1;   %Number of attempts to minimize error term in low-rank aproximation ('feature extraction'), wrt above.
-        maxSpectralFeatureCount  = %10;  %Maximum number of features to estimate, wrt above.
+        numberOfSpectralFeatures = %[n]; %leave empty to estimate empirically (time consuming)
+        numberOfEstimateAttempts = %3;   %Number of attempts to minimize error term in low-rank aproximation ('feature extraction'), wrt above.
+        maxSpectralFeatureCount  = %60;  %Maximum number of features to estimate, wrt above.
         
         %% Machine Learning Configuration
         % Strong user discretion advised: parameters should fit data and be
         % based on sensible observations and followed up with examanation
         % of results.
         
-        mapDimensions   = %[4 4]; % Non-zero vector of non-zero dimensions, will determine how many classes will be produced.
+        mapDimensions   = %[n m]; % Non-zero vector of non-zero dimensions, will determine how many classes will be produced.
         mapNeighborhood = %1;     % Neighborhood Size: suggested range [0, 2], how many degrees of seperation are effected by each weight updated.
         
  	% See Flexer. (1997). Limitations of self-organizing maps for vector quantization and multidimensional scaling.
@@ -158,8 +158,8 @@ classdef JMM_NN2015_POC < handle
         %% Spectrogram Display Configuration
         
         % Leave fields empty if you are fine with not having labeled axes
-        freqRange = [50 180]; %array of 2 values describing the range to acompany the y axis of the spectrogram in output figures.
-        timeRange = [-100 100]; %array of 2 values describing the range to acompany the x axis of the spectrogram in output figures.
+        freqRange = %[50 180]; %array of 2 values describing the range to acompany the y axis of the spectrogram for output figures.
+        timeRange = %[-100 100]; %array of 2 values describing the range to acompany the x axis of the spectrogram for output figures.
         
         
     end
