@@ -4,7 +4,7 @@ classdef JMM_NN2015_POC < handle
     % The following file is a proof of concept demonstration 
     % meant to acompany: 
     % 
-    % 
+    % Leonard, et al. (2015). Sharp wave ripples during visual exploration in the primate hippocampus
     %
     % Author: Jonathan Mikkila, Jan-2015
     %
@@ -28,16 +28,16 @@ classdef JMM_NN2015_POC < handle
     %  and non-negative matrix factorization as toolboxes which can be readily
     %  substituted in this file - see the following references:
     %
-    % Vesanto, et al. (2000). SOM toolbox for Matlab 5.
-    % Helsinki: Helsinki University of Technology.
+    %     Vesanto, et al. (2000). SOM toolbox for Matlab 5.
+    %     Helsinki: Helsinki University of Technology.
     %
-    % Li, & Ngom. (2013). The non-negative matrix factorization toolbox for biological data mining.
-    % Source Code for Biology and Medicine, 8, 10. doi:10.1186/1751-0473-8-10
+    %     Li, & Ngom. (2013). The non-negative matrix factorization toolbox for biological data mining.
+    %     Source Code for Biology and Medicine, 8, 10. doi:10.1186/1751-0473-8-10
     %
     % Usage:
-    %   Make sure to add the include directory to your search path.
-    %   Configuration Variable assignment have been coded out, please
-    %   uncomment and read descriptions before continuing (lines 125-160). 
+    %  Make sure to add the include directory to your search path.
+    %  Configuration Variable assignment have been coded out, please
+    %  uncomment and read descriptions before continuing (lines 125-160). 
     %
     % Input:
     %
