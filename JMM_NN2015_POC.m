@@ -2,10 +2,10 @@ classdef JMM_NN2015_POC < handle
     % JMM_NN2015_POC A POC acompannying Leonard, et al. (2015) in NatNeuro.
     %
     % The following file is a proof of concept demonstration 
-    % meant to acompany: 
+    % meant to acompany the following article (still under review): 
     % 
     % Leonard, et al. (2015). Sharp wave ripples during visual exploration in the primate hippocampus
-    %
+    % 
     % Author: Jonathan Mikkila, Jan-2015
     %
     % About:
