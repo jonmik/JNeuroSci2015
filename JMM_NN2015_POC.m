@@ -10,10 +10,10 @@ classdef JMM_NN2015_POC < handle
     %
     % About:
     %  The goal of the analysis is to investigate if there are differences in
-    %  time-frequency charecteristics between different classes in a data-driven way to
-    %  coaborate the specificity of ontological categories which researchers
-    %  percsribe to neural events. It asks the question - 'is there
-    %  something that it is to be a [-label-]' - 
+    %  time-frequency characteristics between different classes in a data driven way to
+    %  corroborate the assignment of ontological categories (or 'types') which researchers
+    %  prescribe to neural events. It asks the question - 'is there
+    %  something that it is to be a [-label-]?' 
     %
     %  The proof of concept is provided in such a way that it is meant to be
     %  immediately applicable as a tool to the users own experimental data. a minimal
@@ -24,9 +24,9 @@ classdef JMM_NN2015_POC < handle
     %  Apart from the dependencies provided in the folder /include/, this class
     %  also assumes the user has the Neural Network Toolbox and Statistics
     %  Toolbox from MathWorks available to them. If you do not, there exist more
-    %  power, involved, and open source implementations of self organzing (Kohonen) maps,
+    %  power, involved, and open source implementations of self organizing (Kohonen) maps,
     %  and non-negative matrix factorization as toolboxes which can be readily
-    %  subsititued in this file - see the following references:
+    %  substituted in this file - see the following references:
     %
     % Vesanto, et al. (2000). SOM toolbox for Matlab 5.
     % Helsinki: Helsinki University of Technology.
@@ -45,7 +45,7 @@ classdef JMM_NN2015_POC < handle
     %  from 2 or more user-defined categories of events of equal sizes. The data here
     %  are assumed to be spectrograms, but this does not strictly have to be the case.
     %  What is important is that at whichever scale is provided, differences for
-    %  each individual event are pronounced and distinguishable, as well as centered
+    %  each individual event are pronounced and distinguishable, as well as centred
     %  in a meaningful way.
     %
     %  Input is to be provided as an array of structures
@@ -58,9 +58,9 @@ classdef JMM_NN2015_POC < handle
     %    be a human readable string.
     %
     % Configuration:
-    %  The settings(/configuartion variables) for the analysis are entirely defined
-    %  by the public properties. These can be set either by modifiying the code,
-    %  creating an instance of the class and programatically chaning the properties
+    %  The settings(/configuration variables) for the analysis are entirely defined
+    %  by the public properties. These can be set either by modifying the code,
+    %  creating an instance of the class and pragmatically changing the properties
     %  as you would with a struct, or providing a structure with identical field names
     %  with the values you wish to use.
     %
@@ -72,10 +72,10 @@ classdef JMM_NN2015_POC < handle
     %    \JMM_NN2015_POC_output\<dateVec>\
     %  The program will output the classes as defined by the self organizing
     %  map. The number of classes, and how closely they fit the data as a whole
-    %  are properties of the self oranized map which we leave to the user to
-    %  conifure. It will also output a series of images, the first of which is a
+    %  are properties of the self organized map which we leave to the user to
+    %  configure. It will also output a series of images, the first of which is a
     %  scatter plot with the maximum class specificity along any one label, as
-    %  well as the confidence intervals for each pval specified. In addition to
+    %  well as the confidence intervals for each p-val specified. In addition to
     %  this image, the class which is most specific to each enumerated label
     %  will also have the spectrogram for it's best matching unit and a centroid
     %  based on the feature weights of it's members time-frequency non-negative
@@ -84,7 +84,7 @@ classdef JMM_NN2015_POC < handle
     %  will be saved with the name matFile.mat
     %
     %  Variable saved will be an object from the class.
-    %  Public vairables with get access can be used to retrieve results
+    %  Public variables with get access can be used to retrieve results
     %  from properties with private set access (near end of file) 
     %  as if they were a struct - eg:
     % 
@@ -92,15 +92,15 @@ classdef JMM_NN2015_POC < handle
     %     classificationResults = pocObj.classStructureArray;
     %
     % Output Fields for classStructureArray:
-    %  .indices                        - indicies to class memebers from original input 
-    %  .significance                   - p val < based on distance from label swap.
+    %  .indices                        - indices to class members from original input 
+    %  .significance                   - p-val < based on distance from label swap.
     %  .weightCentroid                 - weight for product with the object field .spectralFeatures
     %  .centroidSpectrogramFromWeights - spectrogram construction from weights (wrt)
     %  .bestMatchedMemberIndex         - index for input closest to SOM unit
     %  .bestMatchedSpectrogram         - copy of structureIn(bestMatchedMemberIndex).spectrogram
     %  .classComposition               - representation from each labelID in corresponding input
     %  .size                           - number of elements represented by class
-    %  .classDistance                  - euclidan distance from the midpoint in composition space
+    %  .classDistance                  - euclidean distance from the midpoint in composition space
     %  .classID                        - enumerated identifier 
     %
     % Program Layout:
@@ -116,8 +116,8 @@ classdef JMM_NN2015_POC < handle
     %
     %  Please feel free to contact me at JonMik@YorkU.Ca with any questions.
     %
-    %  This POC is supplied without warrenty.
-    %  Please cite this paper if you extend this utility.
+    %  This proof of concept is supplied without warranty.
+    %  Please consider citing this paper if you extend this utility.
     
     
     properties (Access = public)
