@@ -1,4 +1,5 @@
-The following file is a proof of concept demonstration 
-meant to acompany the following article (still under review): 
+This solution is a proof of concept  
+intended to acompany the following article: 
 
 Leonard, et al. (2015). Sharp wave ripples during visual exploration in the primate hippocampus
+(still under review)
