@@ -1,5 +1,4 @@
 This solution is a proof of concept  
-intended to acompany the following article: 
 
 Any publication making use of this code should cite the original manuscript
 
