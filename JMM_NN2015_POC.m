@@ -198,13 +198,13 @@ classdef JMM_NN2015_POC < handle
             localNames = fieldnames(this);
             inNames    = fieldnames(settingStruct);
             
-            inNamesIdx = inNames(ismember(inNames,localNames));
+            inNamesIdx = ismember(inNames,localNames);
             
-            for i = find(~inNamesIdx)
+            for i = find(~inNamesIdx)'
                 warning(['JMM_NN2015_POC::LoadSettings(...), ' inNames{i} ' not valid property, skipping assignment.']);
             end
             
-            for i = find(inNamesIdx)
+            for i = find(inNamesIdx)'
                 this.(inNames{i}) = settingStruct(inNames{i});
             end
             
