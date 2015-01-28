@@ -1,10 +1,10 @@
-classdef JMM_NN2015_POC < handle
-    % JMM_NN2015_POC A POC acompannying Leonard, et al. (2015) in NatNeuro.
+classdef JMM_JNeuroSci_2015_POC < handle
+    % JMM_JNeuroSci_2015_POC A POC acompannying Leonard, et al. (2015) in NatNeuro.
     %
     % The following file is a proof of concept demonstration 
     % meant to acompany the following article (still under review): 
     % 
-    % Leonard, et al. (2015). Sharp wave ripples during visual exploration in the primate hippocampus
+    % Leonard, et al. (Under Review). Sharp wave ripples during visual exploration in the primate hippocampus
     % 
     % Author: Jonathan Mikkila, Jan-2015
     %
@@ -166,7 +166,7 @@ classdef JMM_NN2015_POC < handle
     
     methods (Access = public)
         
-        function this = JMM_NN2015_POC(structureIn,varargin)
+        function this = JMM_JNeuroSci_2015_POC(structureIn,varargin)
             
             this.structureIn = structureIn;
             
@@ -185,7 +185,7 @@ classdef JMM_NN2015_POC < handle
         
         function this = Start(this)
             
-            this.outDir   = [pwd '\JMM_NN2015_POC_output\' datestr(now,30) '\'];
+            this.outDir   = [pwd '\JMM_JNeuroSci_2015_POC\' datestr(now,30) '\'];
             this.imageDir = [this.outDir 'images\'];
             this.fileDir  = [this.outDir 'matFiles\'];
             
@@ -201,7 +201,7 @@ classdef JMM_NN2015_POC < handle
             inNamesIdx = ismember(inNames,localNames);
             
             for i = find(~inNamesIdx)'
-                warning(['JMM_NN2015_POC::LoadSettings(...), ' inNames{i} ' not valid property, skipping assignment.']);
+                warning(['JMM_JNeuroSci_2015_POC::LoadSettings(...), ' inNames{i} ' not valid property, skipping assignment.']);
             end
             
             for i = find(inNamesIdx)'
@@ -284,7 +284,7 @@ classdef JMM_NN2015_POC < handle
             if isa(spectrogramArrayInput, 'double')
                 
                 if all(size(spectrogramArrayInput) > 1)
-                    error('JMM_NN2015_POC::UnFlattenSpectrogramRowMatrix(...) - invalid input, see method definition');
+                    error('JMM_JNeuroSci_2015_POC::UnFlattenSpectrogramRowMatrix(...) - invalid input, see method definition');
                 end
                 
                 
@@ -514,8 +514,8 @@ classdef JMM_NN2015_POC < handle
                 mkdir(this.fileDir);
             end
             
-            JMM_NN2015_Obj = this;
-            save([ this.fileDir 'matFile.mat'], 'JMM_NN2015_Obj', '-v6');
+            JMM_JNeuroSci_2015_POC_Obj = this;
+            save([ this.fileDir 'matFile.mat'], 'JMM_JNeuroSci_2015_POC_Obj', '-v6');
             
         end
         
