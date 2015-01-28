@@ -69,7 +69,7 @@ classdef JMM_JNeuroSci_2015_POC < handle
     %
     % Output:
     %  All output is collected under the local folder
-    %   cd()\JMM_NN2015_POC_output\<dateVec>\
+    %   cd()\JMM_JNeuroSci_2015_POC\<dateVec>\
     %  The program will output classes as they are defined by the self organizing
     %  map. The number of classes, and how closely they fit the data as a whole
     %  are properties of the self organized map, which we leave to the user to
@@ -88,7 +88,7 @@ classdef JMM_JNeuroSci_2015_POC < handle
     %  from properties with private set access (near end of file) 
     %  as if they were a struct - eg:
     % 
-    %     pocObj = JMM_NN2015_POC(input, settings)
+    %     pocObj = JMM_JNeuroSci_2015_POC(input, settings)
     %     classificationResults = pocObj.classStructureArray;
     %
     % Output Fields for classStructureArray:
@@ -105,7 +105,7 @@ classdef JMM_JNeuroSci_2015_POC < handle
     %
     % Program Layout:
     %  The POC is largely self-contained to the class. If you are not familiar
-    %  with classes, begin at the function JMM_NN2015_POC(...).
+    %  with classes, begin at the function JMM_JNeuroSci_2015_POC(...).
     %
     %  The program flow has been restricted to Main(...), variables and
     %  functions have been given descriptive and verbose titles.
@@ -114,7 +114,7 @@ classdef JMM_JNeuroSci_2015_POC < handle
     %  must be configured, along with their descriptions and some recommended ranges.
     %
     %
-    %  Please feel free to contact me at JonMik@YorkU.Ca with any questions.
+    %  Please feel free to contact me at JonMik@YorkU.ca with any questions.
     %
     %  This proof of concept is supplied without warranty.
     %  Please consider citing this paper if you extend this utility.
@@ -398,7 +398,7 @@ classdef JMM_JNeuroSci_2015_POC < handle
             [labelIDs, ~ , labelCounts] = unique([inStructure.labelID]);
             
             if ~all(logical(diff(labelCounts)))
-                warning(['JMM_NN2015_POC - user input violates assumption of equal number   ' ...
+                warning(['JMM_JNeuroSci_2015_POC - user input violates assumption of equal number   ' ...
                          'of elecments for each set of labels, large deviations will        ' ...
                          'produce invalid results.']                                        );
             end
