@@ -6,4 +6,4 @@ Timothy Leonard, Jonathan Mikkila, Jason Gerrard, Shaun R. Patel, Emad Eskandar,
 
 and link to this repository
 
-https://github.com/jonmik/NatNeuro2015/
+https://github.com/jonmik/JNeuroSci2015/
